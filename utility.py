@@ -5,6 +5,18 @@ import json
 
 
 def generate_path_pattern() -> str:
+    pattern_dir = [r"/\w+/\w{3}/", r"/\w+/\w{5}/", r"_\d+.txt", ]
+    pattern_range1 = [r"7[2][5-9]\d", r"7[34]\d{2}", ]
+    pattern_range2 = [r"29\d{3}", ]
+
+    pattern = '^'
+    for ptr in pattern_range1:
+        pattern += '(' + pattern_dir[0] + ptr + pattern_dir[2] + ')' + '|'
+
+    for ptr in pattern_range2:
+        pattern += '(' + pattern_dir[1] + ptr + pattern_dir[2] + ')' + '|'
+
+    pattern = pattern[:-1] + '$'
 
     return pattern
 
