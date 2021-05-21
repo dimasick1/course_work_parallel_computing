@@ -9,7 +9,7 @@ def generate_path_pattern() -> str:
     pattern_range1 = [r"7[2][5-9]\d", r"7[34]\d{2}", ]
     pattern_range2 = [r"29\d{3}", ]
 
-    pattern = '^'
+    pattern = r"^"
     for ptr in pattern_range1:
         pattern += '(' + pattern_dir[0] + ptr + pattern_dir[2] + ')' + '|'
 
