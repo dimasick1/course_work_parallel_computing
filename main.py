@@ -17,6 +17,22 @@ def main() -> None:
 
     results = []
     index_dicts = []
+    while True:
+        num_of_threads = input('Enter num of threads or "quit" if you want to see the results: ')
+
+        if num_of_threads == 'quit':
+            break
+
+        num_of_threads = int(num_of_threads)
+
+        start = time.time()
+        index_dicts.append(indexer.create_index(path, paths, num_of_threads))
+        end = time.time() - start
+
+        results.append((num_of_threads, end))
+
+        print(f'Time for {num_of_threads} threads: {end}')
+          
     draw_results(results, num_of_files)
     print('Sameness check: ', sameness_dict_check(index_dicts))
 
